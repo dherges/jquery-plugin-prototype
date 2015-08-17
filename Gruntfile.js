@@ -29,6 +29,17 @@ module.exports = function (grunt) {
       }
     },
 
+    // grunt mocha_phantomjs
+    mocha_phantomjs: {
+      all: {
+        options: {
+          reporter: 'json',
+          output: 'test_results/lib.json',
+          urls: ['http://localhost:3003/tests/lib.html']
+        }
+      }
+    },
+
     // grunt jshint
     jshint: {
       options: {
@@ -69,8 +80,10 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-mocha-phantomjs');
 
-
+  grunt.registerTask('test', ['connect', 'mocha_phantomjs'])
   grunt.registerTask('dist', ['jshint', 'uglify'])
 
 };
