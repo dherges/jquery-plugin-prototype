@@ -5,7 +5,6 @@
  * Copyright (c) 2015 David Herges
  * Licensed under the MIT license.
  */
-
 'use strict';
 
 module.exports = function (grunt) {
@@ -17,25 +16,33 @@ module.exports = function (grunt) {
 
     // grunt connect
     connect: {
-      dev: {
+      options: { host: 'localhost' },
+      // grunt connect:dev
+      dev:  {
         options: {
-          host: 'localhost',
           port: 3003,
           keepalive: true,
           open: {
             appName: '/Applications/Google Chrome.app'
           }
         }
+      },
+      // grunt connect:test
+      test: {
+        options: {
+          port: 3004,
+          keepalive: false
+        }
       }
     },
 
     // grunt mocha_phantomjs
     mocha_phantomjs: {
-      all: {
+      tests: {
         options: {
           reporter: 'json',
-          output: 'test_results/lib.json',
-          urls: ['http://localhost:3003/tests/lib.html']
+          output: 'test_results/suite.json',
+          urls: ['http://localhost:3004/specs/suite.html']
         }
       }
     },
@@ -52,7 +59,10 @@ module.exports = function (grunt) {
       },
       // grunt jshint:specs
       specs: {
-        src: ['specs/**/*.js']
+        src: ['specs/**/*.js'],
+        options: {
+          jshintrc: 'specs/.jshintrc'
+        }
       }
     },
 
@@ -65,25 +75,22 @@ module.exports = function (grunt) {
       }
     },
 
-    // grunt watch
-    watch: {
-      // grunt watch:lib
-      lib: {
-        files: '<%= jshint.lib.src %>',
-        tasks: []
-      }
+    // grunt clean
+    clean: {
+      test_results: ['test_results']
     }
 
   });
 
+  // Load task definitions from package.json devDependencies
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-mocha-phantomjs');
 
-  grunt.registerTask('test', ['connect', 'mocha_phantomjs'])
+  // Register alias tasks
+  grunt.registerTask('test', ['clean', 'connect:test', 'mocha_phantomjs'])
   grunt.registerTask('dist', ['jshint', 'uglify'])
 
 };

@@ -29,6 +29,6 @@ Second, let your plugin be instanstiated through HTML ``data-*`` API:
 ## TODOs
 
 * quality measures
- * tests -> mocha, headless browser stuff..
+ * tests -> more tests...
 * features
  * .on('some-reload-event', <get the shit going again..>)
