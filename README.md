@@ -6,16 +6,16 @@
 ## Usage
 
 
-See ``demo/plugin.js`
+See ``demo/plugin.js``
 
 First, define plugin's prototype
 
-``js
+```js
 var MyCoolPlugin = function() { ... }
 MyCoolPlugin.prototype = ...
 
 $.pp.register('mycoolplugin', MyCoolPlugin)
-``
+```
 
 Second, let your plugin be instanstiated through HTML ``data-*`` API:
 
