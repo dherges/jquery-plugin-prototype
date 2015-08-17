@@ -1,0 +1,10 @@
+{
+  "name": "jquery-register-plugin-prototype",
+  "main": [
+    "Gruntfile.js"
+  ],
+  "dependencies": {
+    "jquery": "~2"
+  },
+  "version": "1.0.0"
+}
