@@ -1,6 +1,6 @@
 /*!
- * jquery-register-plugin-prototype
- * https://github.com/dherges/jquery-register-plugin-prototype
+ * jquery-plugin-prototype
+ * https://github.com/dherges/jquery-plugin-prototype
  *
  * Copyright (c) 2015 David Herges
  * Licensed under the MIT license.

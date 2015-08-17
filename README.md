@@ -1,6 +1,6 @@
-# jquery-register-plugin-prototype
+# jquery-plugin-prototype
 
-> Register JavaScript prototypes as jQuery plugins
+> JavaScript prototypes are your better jQuery plugins
 
 
 ## Usage
@@ -14,15 +14,15 @@ First, define plugin's prototype
 var MyCoolPlugin = function() { ... }
 MyCoolPlugin.prototype = ...
 
-$.registerPluginProto('mycoolplugin', MyCoolPlugin)
+$.pp.register('mycoolplugin', MyCoolPlugin)
 ``
 
 Second, let your plugin be instanstiated through HTML ``data-*`` API:
 
 ```html
 <div data-plugin="mycoolplugin">...</div>
-``
-
+<script>$.pp.init()</script>
+```
 
 
 

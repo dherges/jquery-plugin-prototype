@@ -1,8 +1,8 @@
 {
-  "name": "jquery-register-plugin-prototype",
-  "description": "Register JavaScript prototypes as jQuery plugins",
+  "name": "jquery-plugin-prototype",
+  "description": "JavaScript prototypes are your jQuery plugins",
   "main": [
-    "dist/jquery-register-plugin-prototype.min.js"
+    "dist/jquery-plugin-prototype.min.js"
   ],
   "moduleType": "globals",
   "dependencies": {
@@ -11,7 +11,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dherges/jquery-register-plugin-prototype.git"
+    "url": "https://github.com/dherges/jquery-plugin-prototype.git"
   },
   "authors": [
     { "name": "David Herges", "email": "david@spektrakel.de" }
