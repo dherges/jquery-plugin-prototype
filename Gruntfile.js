@@ -90,7 +90,9 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-mocha-phantomjs');
 
   // Register alias tasks
-  grunt.registerTask('test', ['clean', 'connect:test', 'mocha_phantomjs'])
+  grunt.registerTask('dev',  ['connect:dev'])
   grunt.registerTask('dist', ['jshint', 'uglify'])
+  grunt.registerTask('test', ['clean', 'connect:test', 'mocha_phantomjs'])
+
 
 };
