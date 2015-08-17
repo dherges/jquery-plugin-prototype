@@ -1,10 +1,9 @@
 {
   "name": "jquery-register-plugin-prototype",
-  "version": "1.0.0",
   "description": "Register JavaScript Prototypes as jQuery plugins",
-  "main": " ",
+  "version": "1.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "grunt test"
   },
   "repository": {
     "type": "git",

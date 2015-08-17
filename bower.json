@@ -1,10 +1,19 @@
 {
   "name": "jquery-register-plugin-prototype",
+  "description": "Register JavaScript prototypes as jQuery plugins",
   "main": [
-    "Gruntfile.js"
+    "dist/jquery-register-plugin-prototype.min.js"
   ],
+  "moduleType": "globals",
   "dependencies": {
     "jquery": "~2"
   },
-  "version": "1.0.0"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dherges/jquery-register-plugin-prototype.git"
+  },
+  "authors": [
+    { "name": "David Herges", "email": "david@spektrakel.de" }
+  ]
 }

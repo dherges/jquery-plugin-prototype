@@ -8,6 +8,9 @@
 
 ;(function($) {
 
+  'use strict';
+
+
   /** Usage: $.registerPluginProto('myPlugin', {obj extends Prototype}) */
   $.registerPluginProto = function (name, Proto) {
 

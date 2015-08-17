@@ -13,6 +13,7 @@ module.exports = function (grunt) {
   grunt.initConfig({
     // Metadata
     pkg: grunt.file.readJSON('package.json'),
+    bwr: grunt.file.readJSON('bower.json'),
 
     // grunt connect
     connect: {
@@ -31,43 +32,25 @@ module.exports = function (grunt) {
     // grunt jshint
     jshint: {
       options: {
-        force: true
+        force: true,
+        jshintrc: '.jshintrc'
       },
-      // grunt jshint:gruntfile
-      gruntfile: {
-        options: {
-          // .jshintrc from grunt-init-plugin-example
-          jshintrc: '.jshintrc'
-        },
-        src: 'Gruntfile.js'
-      },
-      // grunt jshint:lib
-      lib: {
-        options: {
-          // .jshintrc from grunt-init-plugin-example
-          jshintrc: 'lib/.jshintrc'
-        },
-        src: ['lib/**/*.js']
+      // grunt jshint:src
+      src: {
+        src: ['src/**/*.js']
       },
       // grunt jshint:specs
       specs: {
-        options: {
-          // .jshintrc from grunt-init-plugin-example
-          jshintrc: 'specs/.jshintrc'
-        },
         src: ['specs/**/*.js']
       }
     },
 
     // grunt uglify
     uglify: {
-      options: {
-        banner: '<%= banner %>'
-      },
       // grunt uglify:dist
       dist: {
-        src: '<%= concat.dist.dest %>',
-        dest: 'dist/xcsrf.min.js'
+        src: 'src/**/*.js',
+        dest: '<%= bwr.main[0] %>'
       }
     },
 
@@ -86,5 +69,8 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
+
+
+  grunt.registerTask('dist', ['jshint', 'uglify'])
 
 };
