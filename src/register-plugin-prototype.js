@@ -10,9 +10,17 @@
 
   'use strict';
 
+  // yo yo yo ... let's popullute the $ namespace ... like print more money $$$
+  $.pp = {}
 
-  /** Usage: $.registerPluginProto('myPlugin', {obj extends Prototype}) */
-  $.registerPluginProto = function (name, Proto) {
+
+  var defaultOpts = {
+    noConflict: true
+  }
+
+  /** Usage: $.pp.register('myPlugin', {obj extends Prototype}) */
+  $.pp.register = function (name, Proto, opts) {
+    opts = $.extend({}, defaultOpts, opts)
 
     // PLUGIN function
     var Plugin = function (option) {
@@ -26,24 +34,38 @@
       })
     }
 
-    // NO CONFLICT
-    var old = $.fn[name]
+    // register jQuery plugins
     $.fn[name]             = Plugin
     $.fn[name].Constructor = Proto
 
-    $.fn[name].noConflict = function () {
-      $.fn[name] = old
-      return this
+    // NO CONFLICT
+    if (opts.noConflict) {
+      var old = $.fn[name]
+
+      $.fn[name].noConflict = function () {
+        $.fn[name] = old
+        return this
+      }
     }
-
-    // DATA-API + DATA-PLUGIN loader
-    $(window).on('load', function () {
-      $('[data-plugin="' + name + '"]').each(function () {
-        var $element = $(this)
-        Plugin.call($element, $element.data())
-      })
-    })
-
   }
+
+
+  $.pp.init = function (name) {
+    var filterExpr = (name !== '' && name.length) ? '[data-plugin="' + name + '"]' : '*'
+
+    $('body [data-plugin]')
+      .filter(filterExpr)
+      .each(function () {
+        var $element = $(this)
+        var name = $element.data('plugin')
+
+        $.fn[name].call($element, $element.data())
+      })
+  }
+
+  $.pp.instance = function (el, name) {
+    return $(el).data(name)
+  }
+
 
 })(jQuery)

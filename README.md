@@ -14,7 +14,7 @@ First, define plugin's prototype
 var MyCoolPlugin = function() { ... }
 MyCoolPlugin.prototype = ...
 
-$.registerPluginProto('mycoolplugin, MyCoolPlugin)
+$.registerPluginProto('mycoolplugin', MyCoolPlugin)
 ``
 
 Second, let your plugin be instanstiated through HTML ``data-*`` API:
