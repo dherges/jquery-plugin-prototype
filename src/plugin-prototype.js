@@ -18,7 +18,14 @@
     noConflict: true
   }
 
-  /** Usage: $.pp.register('myPlugin', {obj extends Prototype}) */
+
+  /**
+   * Registers a JavaScript prototype as jQuery plugin.
+   *
+   * @param name {String} jQuery plugin name
+   * @param Proto {object} A JavaScript prototype object
+   * @param opts {object} Optional options...tbd {noConflict: false} to suppress noConflict mode
+   */
   $.pp.register = function (name, Proto, opts) {
     opts = $.extend({}, defaultOpts, opts)
 
@@ -50,6 +57,11 @@
   }
 
 
+  /**
+   * Instantiates prototype instances for jQuery plugins.
+   *
+   * @param name {String} jQuery plugin names; leave empty to instantiate all
+   */
   $.pp.init = function (name) {
     var filterExpr = (name !== '' && name.length) ? '[data-plugin="' + name + '"]' : '*'
 
@@ -63,6 +75,12 @@
       })
   }
 
+  /**
+   * Returns prototype instances
+   *
+   * @param el {Element|String} jQuery element or selector string
+   * @param name {String} jQuery plugin name
+   */
   $.pp.instance = function (el, name) {
     return $(el).data(name)
   }

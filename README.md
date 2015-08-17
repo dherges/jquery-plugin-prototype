@@ -11,8 +11,8 @@ See ``demo/plugin.js``
 First, define plugin's prototype
 
 ```js
-var MyCoolPlugin = function() { ... }
-MyCoolPlugin.prototype = ...
+var MyCoolPlugin = function(element, options) { ... }
+MyCoolPlugin.prototype.doSomething = function() { ... }
 
 $.pp.register('mycoolplugin', MyCoolPlugin)
 ```
